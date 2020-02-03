@@ -4,8 +4,12 @@ import (
 	"fmt"
 )
 
+func welcomeString() string {
+	return "Hello Go! Example string to output"
+}
+
 func main() {
-	fmt.Println("Hello Go! Example string to output")
+	fmt.Println(welcomeString())
 }
 
 
