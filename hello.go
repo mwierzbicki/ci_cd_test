@@ -5,7 +5,7 @@ import (
 )
 
 func welcomeString() string {
-	return "Hello Go! Example string to output"
+	return "Hello Go! Good to see you work!"
 }
 
 func main() {
