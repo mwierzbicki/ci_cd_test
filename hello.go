@@ -9,6 +9,7 @@ func welcomeString() string {
 }
 
 func main() {
+	forgottenVariable := "something"
 	fmt.Println(welcomeString())
 }
 
