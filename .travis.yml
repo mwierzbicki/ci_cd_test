@@ -12,7 +12,7 @@ script:
   - docker build -t hellogo .
 after_success:
   - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD 
-  - docker tag back $DOCKER_USERNAME/hellogo:$TRAVIS_BUILD_NUMBER
+  - docker tag hellogo $DOCKER_USERNAME/hellogo:$TRAVIS_BUILD_NUMBER
   - docker push $DOCKER_USERNAME/hellogo:$TRAVIS_BUILD_NUMBER
-  - docker tag back $DOCKER_USERNAME/hellogo:latest
+  - docker tag hellogo $DOCKER_USERNAME/hellogo:latest
   - docker push $DOCKER_USERNAME/hellogo:latest
