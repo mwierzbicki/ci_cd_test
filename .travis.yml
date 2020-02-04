@@ -9,7 +9,7 @@ before_script:
 script:
   - golangci-lint run
   - go test -v ./...
-  - docker built -t hellogo .
+  - docker build -t hellogo .
 after_success:
   - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD 
   - docker tag back $DOCKER_USERNAME/hellogo:$TRAVIS_BUILD_NUMBER
