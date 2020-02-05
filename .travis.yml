@@ -6,9 +6,8 @@ notifications:
   email: false
 jobs:
   include:
-    - stage: prepare
-    - script: ./.travis/prepare.sh
     - stage: test
-    - script: ./.travis/test.sh
+      before_script: ./.travis/prepare.sh
+      script: ./.travis/test.sh
     - stage: deploy
-    - script: ./.travis/deploy.sh
+      script: ./.travis/deploy.sh
