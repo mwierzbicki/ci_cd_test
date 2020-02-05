@@ -1,18 +1,19 @@
+stages:
+  - prepare
+  - test
+  - name: deploy
+    if: branch = master
 language: go
 sudo: required
 services:
   - docker
 notifications:
   email: false
-before_script:
-  - curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $GOPATH/bin v1.23.1
-script:
-  - golangci-lint run
-  - go test -v ./...
-  - docker build -t hellogo .
-after_success:
-  - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD 
-  - docker tag hellogo $DOCKER_USERNAME/hellogo:$TRAVIS_BUILD_NUMBER
-  - docker push $DOCKER_USERNAME/hellogo:$TRAVIS_BUILD_NUMBER
-  - docker tag hellogo $DOCKER_USERNAME/hellogo:latest
-  - docker push $DOCKER_USERNAME/hellogo:latest
+jobs:
+  include:
+    - stage: prepare
+    - script: ./.travis/prepare.sh
+    - stage: test
+    - script: ./.travis/test.sh
+    - stage: deploy
+    - script: ./.travis/deploy.sh
