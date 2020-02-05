@@ -1,13 +1,13 @@
-language: go
-sudo: required
-services:
-  - docker
 notifications:
   email: false
 jobs:
   include:
     - stage: test
+      language: go
       before_script: ./.travis/prepare.sh
       script: ./.travis/test.sh
     - stage: deploy
+      sudo: required
+      services:
+      - docker
       script: ./.travis/deploy.sh
