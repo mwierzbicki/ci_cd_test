@@ -5,7 +5,7 @@ import (
 )
 
 func welcomeString() string {
-	return "Hello Go! Good to see you work! Now with CI integration!"
+	return "Hello Go! Good to see you work! Now with CI integration! Goodbye!"
 }
 
 func main() {
